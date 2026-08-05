@@ -117,6 +117,28 @@ export default function Home() {
         <div className="swap-card"><div><p className="eyebrow">A LOVELY NEXT MOVE</p><h2>Try a little<br /><em>side quest.</em></h2><p>Not a swap-out. Just another door to open.</p></div><div className="swap-arrow">↘</div><button onClick={() => swap && setSelectedId(swap.id)}><span>{swap?.name.replace(" Cereal", "") ?? "Browse more"}</span><small>{swap?.brand ?? ""}</small><b>see why →</b></button></div>
       </section>
 
+      <section className="cereal-gallery" aria-labelledby="cereal-gallery-title">
+        <div className="gallery-heading"><div><p className="eyebrow">THE WHOLE AISLE, IN LITTLE WINDOWS</p><h2 id="cereal-gallery-title">Every box has a story.</h2></div><p>Twenty cereals, a few useful clues, and plenty to be curious about.</p></div>
+        <div className="cereal-card-grid">
+          {products.map((product, index) => {
+            const cardSignals = getSignals(product);
+            const nutrition = product.nutritionPer100g;
+            const cardPalette = palettes[index % palettes.length];
+            return <article className="cereal-card" key={product.id} style={{ "--card-accent": cardPalette[0], "--card-soft": cardPalette[1] } as React.CSSProperties}>
+              <button className="cereal-card-main" onClick={() => { setSelectedId(product.id); window.scrollTo({ top: 0, behavior: "smooth" }); }} aria-label={`Explore ${product.name}`}>
+                <div className="cereal-card-top"><span className="card-number">{String(index + 1).padStart(2, "0")}</span><span className="card-confidence">{product.confidence === "high" ? "label-backed" : "needs a peek"}</span></div>
+                <div className="mini-box" aria-hidden="true"><span>✦</span><b>{product.name.replace(" Cereal", "")}</b></div>
+                <p className="card-brand">{product.brand}</p>
+                <h3>{product.name.replace(" Cereal", "")}</h3>
+                <p className="card-reading">{cardSignals.whole ? "Whole grain leads the way." : `${cardSignals.first.slice(0, 28)} leads the list.`}</p>
+                <div className="card-metrics"><span><b>{nutrition.sugarG === null ? "—" : `${nutrition.sugarG}g`}</b><small>sugar</small></span><span><b>{nutrition.fiberG === null ? "—" : `${nutrition.fiberG}g`}</b><small>fiber</small></span><span><b>{nutrition.sodiumMg === null ? "—" : `${nutrition.sodiumMg}mg`}</b><small>sodium</small></span></div>
+                <div className="card-bottom"><span className="tiny-score">{cardSignals.score}<small>/100</small></span><span className="card-arrow">↗</span></div>
+              </button>
+            </article>;
+          })}
+        </div>
+      </section>
+
       <footer><span>food apart <i>•</i> made for better questions</span><span>Data is educational, not medical advice.</span></footer>
     </main>
   );
