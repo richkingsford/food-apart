@@ -15,13 +15,13 @@ const palettes = [
 ];
 
 const goalOptions = [
-  { id: "steady", icon: "↗", title: "Steady mornings", description: "more staying power", score: (p: Product) => (p.nutritionPer100g.fiberG ?? 0) * 6 - (p.nutritionPer100g.sugarG ?? 12) * 1.4 + (getSignals(p).whole ? 16 : 0) },
-  { id: "sweet", icon: "✦", title: "Less sweet", description: "a gentler sugar story", score: (p: Product) => 100 - (p.nutritionPer100g.sugarG ?? 18) * 4 },
-  { id: "fiber", icon: "✺", title: "Fiber fireworks", description: "celebrate the roughage", score: (p: Product) => (p.nutritionPer100g.fiberG ?? 0) * 9 + (getSignals(p).whole ? 12 : 0) },
-  { id: "whole", icon: "◒", title: "Whole-grain glow", description: "let the grain shine", score: (p: Product) => (getSignals(p).whole ? 78 : 22) + (p.nutritionPer100g.fiberG ?? 0) * 3 },
-  { id: "mellow", icon: "〰", title: "Keep it mellow", description: "a quieter sodium signal", score: (p: Product) => 100 - (p.nutritionPer100g.sodiumMg ?? 500) / 7 },
-  { id: "simple", icon: "…", title: "Simple stories", description: "fewer plot twists", score: (p: Product) => 100 - p.ingredients.split(",").length * 3 + (getSignals(p).whole ? 10 : 0) },
-  { id: "bright", icon: "☼", title: "Bright all-rounder", description: "a little bit of everything", score: (p: Product) => getSignals(p).score },
+  { id: "wellness", icon: "☼", title: "Wellness, but make it breakfast", description: "the feel-good baseline", score: (p: Product) => getSignals(p).score + (p.nutritionPer100g.proteinG ?? 0) },
+  { id: "lighter", icon: "↗", title: "Lighten the load", description: "a lighter-feeling bowl", score: (p: Product) => 100 - (p.nutritionPer100g.calories ?? 400) / 6 - (p.nutritionPer100g.sugarG ?? 14) * 1.4 + (p.nutritionPer100g.fiberG ?? 0) * 3 },
+  { id: "heart", icon: "♡", title: "Love your ticker", description: "heart-conscious clues", score: (p: Product) => 100 - (p.nutritionPer100g.sodiumMg ?? 500) / 7 + (getSignals(p).whole ? 18 : 0) + (p.nutritionPer100g.fiberG ?? 0) * 2 },
+  { id: "gut", icon: "✺", title: "Gut feeling", description: "feed your inner ecosystem", score: (p: Product) => (p.nutritionPer100g.fiberG ?? 0) * 9 + (getSignals(p).whole ? 16 : 0) + (/inulin|probiotic/i.test(p.ingredients) ? 14 : 0) },
+  { id: "cardio", icon: "➶", title: "Go-go bowl", description: "fuel for high-cardio days", score: (p: Product) => (p.nutritionPer100g.proteinG ?? 0) * 4 + (p.nutritionPer100g.fiberG ?? 0) * 4 - (p.nutritionPer100g.sugarG ?? 14) + (getSignals(p).whole ? 10 : 0) },
+  { id: "desk", icon: "⌂", title: "Desk-day defense", description: "smart fuel between meetings", score: (p: Product) => 100 - (p.nutritionPer100g.sugarG ?? 14) * 2 + (p.nutritionPer100g.fiberG ?? 0) * 5 + (p.nutritionPer100g.proteinG ?? 0) * 2 },
+  { id: "longgame", icon: "∞", title: "Long-game energy", description: "play the steady game", score: (p: Product) => (p.nutritionPer100g.fiberG ?? 0) * 7 + (p.nutritionPer100g.proteinG ?? 0) * 3 - (p.nutritionPer100g.sugarG ?? 14) * 1.2 + (getSignals(p).whole ? 14 : 0) },
 ] as const;
 type GoalId = (typeof goalOptions)[number]["id"];
 
@@ -133,9 +133,10 @@ export default function Home() {
         <div className="swap-card"><div><p className="eyebrow">A LOVELY NEXT MOVE</p><h2>Try a little<br /><em>side quest.</em></h2><p>Not a swap-out. Just another door to open.</p></div><div className="swap-arrow">↘</div><button onClick={() => swap && setSelectedId(swap.id)}><span>{swap?.name.replace(" Cereal", "") ?? "Browse more"}</span><small>{swap?.brand ?? ""}</small><b>see why →</b></button></div>
       </section>
 
+      <section className="mission-strip" aria-label="Choose a health goal"><div className="mission-intro"><p className="eyebrow">CHOOSE YOUR MISSION</p><h2>What would make breakfast feel like a win?</h2><p>Pick the feeling you are chasing. We&apos;ll bring the most interesting matches to the front.</p></div><div className="goal-picker">{goalOptions.map((goal) => <button key={goal.id} className={activeGoal === goal.id ? "goal-button active" : "goal-button"} onClick={() => setActiveGoal(goal.id)}><span>{goal.icon}</span><b>{goal.title}</b><small>{goal.description}</small></button>)}<button className={!activeGoal ? "goal-button active" : "goal-button"} onClick={() => setActiveGoal(null)}><span>✦</span><b>Surprise me</b><small>show me the whole aisle</small></button></div></section>
+
       <section className="cereal-gallery" aria-labelledby="cereal-gallery-title">
         <div className="gallery-heading"><div><p className="eyebrow">THE WHOLE AISLE, IN LITTLE WINDOWS</p><h2 id="cereal-gallery-title">Every box has a story.</h2></div><p>{activeGoalData ? `${activeGoalData.title}: ${activeGoalData.description}. Your best fits float to the front.` : "Twenty cereals, a few useful clues, and plenty to be curious about."}</p></div>
-        <div className="goal-picker" aria-label="Choose a health goal"><div className="goal-picker-intro"><span className="eyebrow">CHOOSE YOUR MISSION</span><strong>What would make breakfast feel like a win?</strong></div><button className={!activeGoal ? "goal-button active" : "goal-button"} onClick={() => setActiveGoal(null)}>All the curious</button>{goalOptions.map((goal) => <button key={goal.id} className={activeGoal === goal.id ? "goal-button active" : "goal-button"} onClick={() => setActiveGoal(goal.id)}><span>{goal.icon}</span><b>{goal.title}</b><small>{goal.description}</small></button>)}</div>
         {activeGoalData && <div className="goal-result-note"><span>✦</span><b>Best fits for {activeGoalData.title.toLowerCase()}</b><span>sorted by the clues in the label · click any box to explore</span></div>}
         <div className="cereal-card-grid">
           {rankedProducts.map((product, index) => {
