@@ -24,3 +24,5 @@ footer { display: flex; justify-content: space-between; padding: 25px 2px 0; col
 @media (max-width: 1100px) { .cereal-card-grid { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 900px) { .cereal-card-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 620px) { .gallery-heading { display: block; }.gallery-heading > p { margin-top: 14px; }.cereal-card-grid { grid-template-columns: 1fr; }.cereal-card-main { min-height: 285px; } }
+.topbar, .hero, .insight-grid { display: none; }
+.cereal-gallery { padding-top: 42px; }
