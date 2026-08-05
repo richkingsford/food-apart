@@ -1,0 +1,240 @@
+{
+  "schemaVersion": 1,
+  "dataset": "food-apart-cereal-v1",
+  "category": "breakfast cereal",
+  "retrievedAt": "2026-08-05",
+  "notes": [
+    "Nutrition values are normalized per 100 g for comparison.",
+    "USDA records are label-derived branded-food records.",
+    "Open Food Facts records are secondary coverage and should be rechecked against the package before publication.",
+    "Ingredient order is preserved, but exact ingredient percentages are not inferred."
+  ],
+  "products": [
+    {
+      "id": "usda-2517161",
+      "barcode": "00016000275287",
+      "name": "Cheerios Cereal",
+      "brand": "General Mills",
+      "serving": { "amount": 20, "unit": "g" },
+      "nutritionPer100g": { "calories": 117, "proteinG": 5.56, "fatG": 1.85, "carbsG": 21.6, "fiberG": 2.5, "sugarG": null, "sodiumMg": 154 },
+      "ingredients": "WHOLE GRAIN OATS, CORN STARCH, SUGAR, SALT, TRIPOTASSIUM PHOSPHATE. VITAMIN E (MIXED TOCOPHEROLS) ADDED TO PRESERVE FRESHNESS. VITAMINS AND MINERALS: CALCIUM CARBONATE, IRON AND ZINC, VITAMIN C, NIACINAMIDE, VITAMIN B6, VITAMIN A, THIAMIN MONONITRATE, FOLIC ACID, VITAMIN B12, VITAMIN D3.",
+      "source": { "provider": "USDA FoodData Central", "recordId": "2517161", "url": "https://fdc.nal.usda.gov/food-details/2517161/nutrients" },
+      "confidence": "high"
+    },
+    {
+      "id": "usda-610432",
+      "barcode": "00016000483668",
+      "name": "Honey Nut Cheerios Cereal",
+      "brand": "General Mills",
+      "serving": { "amount": 28, "unit": "g" },
+      "nutritionPer100g": { "calories": 393, "proteinG": 7.14, "fatG": 5.36, "carbsG": 78.6, "fiberG": 7.1, "sugarG": null, "sodiumMg": 571 },
+      "ingredients": "WHOLE GRAIN OATS, SUGAR, OAT BRAN, CORN STARCH, HONEY, BROWN SUGAR SYRUP, SALT, TRIPOTASSIUM PHOSPHATE, CANOLA OIL, NATURAL ALMOND FLAVOR. VITAMINS AND MINERALS.",
+      "source": { "provider": "USDA FoodData Central", "recordId": "610432", "url": "https://fdc.nal.usda.gov/food-details/610432/nutrients" },
+      "confidence": "high"
+    },
+    {
+      "id": "usda-2739267",
+      "barcode": "00016000169678",
+      "name": "Lucky Charms Cereal",
+      "brand": "General Mills",
+      "serving": { "amount": 36, "unit": "g" },
+      "nutritionPer100g": { "calories": 380, "proteinG": 7.6, "fatG": 3.97, "carbsG": 83.4, "fiberG": 6.37, "sugarG": null, "sodiumMg": 624 },
+      "ingredients": "WHOLE GRAIN OATS, SUGAR, WHOLE GRAIN CORN, CORN STARCH, CORN SYRUP, DEXTROSE. CONTAINS 2% OR LESS OF: SALT, MODIFIED CORN STARCH, GELATIN, TRISODIUM PHOSPHATE, COLORS, NATURAL AND ARTIFICIAL FLAVOR.",
+      "source": { "provider": "USDA FoodData Central", "recordId": "2739267", "url": "https://fdc.nal.usda.gov/food-details/2739267/nutrients" },
+      "confidence": "high"
+    },
+    {
+      "id": "usda-1912546",
+      "barcode": "016666141544",
+      "name": "Cinnamon Toast Crunch",
+      "brand": "General Mills",
+      "serving": { "amount": 57, "unit": "g" },
+      "nutritionPer100g": { "calories": 404, "proteinG": 5.26, "fatG": 10.5, "carbsG": 79, "fiberG": 5.3, "sugarG": null, "sodiumMg": 579 },
+      "ingredients": "WHOLE GRAIN WHEAT, SUGAR, RICE FLOUR, RICE BRAN AND/OR CANOLA OIL, FRUCTOSE, MALTODEXTRIN, DEXTROSE, SALT, CINNAMON, TRISODIUM PHOSPHATE, SOY LECITHIN, COLOR ADDED.",
+      "source": { "provider": "USDA FoodData Central", "recordId": "1912546", "url": "https://fdc.nal.usda.gov/food-details/1912546/nutrients" },
+      "confidence": "review",
+      "dataQualityNote": "USDA brand-owner field is inconsistent with the product name; verify against package before treating as publication-ready."
+    },
+    {
+      "id": "usda-2643069",
+      "barcode": "842798106430",
+      "name": "Frosted Flakes",
+      "brand": "Kellogg's",
+      "serving": { "amount": 40, "unit": "g" },
+      "nutritionPer100g": { "calories": 350, "proteinG": 5, "fatG": 0, "carbsG": 82.5, "fiberG": 0, "sugarG": null, "sodiumMg": 375 },
+      "ingredients": "DEGERMED YELLOW CORN MEAL, SUGAR, SALT, BARLEY MALT EXTRACT. VITAMINS AND MINERALS.",
+      "source": { "provider": "USDA FoodData Central", "recordId": "2643069", "url": "https://fdc.nal.usda.gov/food-details/2643069/nutrients" },
+      "confidence": "review",
+      "dataQualityNote": "The USDA record is a commissary/private-label entry; verify the package and brand before publication."
+    },
+    {
+      "id": "usda-2611339",
+      "barcode": "0038000284649",
+      "name": "Froot Loops with Marshmallows",
+      "brand": "Kellogg's",
+      "serving": { "amount": 12, "unit": "g" },
+      "nutritionPer100g": { "calories": 375, "proteinG": 8.33, "fatG": 0, "carbsG": 91.7, "fiberG": 8.3, "sugarG": null, "sodiumMg": 417 },
+      "ingredients": "WHOLE GRAIN YELLOW CORN FLOUR, SUGAR, MARSHMALLOWS, ENRICHED FLOUR, WHOLE GRAIN OAT FLOUR, OAT FIBER, VEGETABLE OIL, SOLUBLE CORN FIBER, SALT, NATURAL FLAVOR, COLORS.",
+      "source": { "provider": "USDA FoodData Central", "recordId": "2611339", "url": "https://fdc.nal.usda.gov/food-details/2611339/nutrients" },
+      "confidence": "review",
+      "dataQualityNote": "The source serving size is unusually small; verify the current package label."
+    },
+    {
+      "id": "usda-2675147",
+      "barcode": "021130282913",
+      "name": "Raisin Bran",
+      "brand": "Safeway",
+      "serving": { "amount": 59, "unit": "g" },
+      "nutritionPer100g": { "calories": 339, "proteinG": 8.47, "fatG": 1.69, "carbsG": 78, "fiberG": 13.6, "sugarG": null, "sodiumMg": 356 },
+      "ingredients": "WHOLE GRAIN WHEAT, RAISINS, WHEAT BRAN, SUGAR, BROWN SUGAR SYRUP, SALT, MALTED BARLEY SYRUP, POTASSIUM CHLORIDE. VITAMINS AND MINERALS.",
+      "source": { "provider": "USDA FoodData Central", "recordId": "2675147", "url": "https://fdc.nal.usda.gov/food-details/2675147/nutrients" },
+      "confidence": "high"
+    },
+    {
+      "id": "usda-2182756",
+      "barcode": "9310055537408",
+      "name": "Special K Original",
+      "brand": "Kellogg's",
+      "serving": { "amount": 40, "unit": "g" },
+      "nutritionPer100g": { "calories": 388, "proteinG": 19.2, "fatG": 2.5, "carbsG": 68, "fiberG": 6, "sugarG": null, "sodiumMg": 330 },
+      "ingredients": "RICE, WHOLEGRAINS (WHEAT, OAT FLOUR), WHEAT PROTEIN, SUGAR, MINERALS, OAT FIBRE, SALT, BARLEY MALT EXTRACT, VITAMINS.",
+      "source": { "provider": "USDA FoodData Central", "recordId": "2182756", "url": "https://fdc.nal.usda.gov/food-details/2182756/nutrients" },
+      "confidence": "review",
+      "dataQualityNote": "This is a New Zealand record; regional label and formulation should be confirmed for the target retail market."
+    },
+    {
+      "id": "usda-2675130",
+      "barcode": "021130280025",
+      "name": "Corn Flakes",
+      "brand": "Safeway",
+      "serving": { "amount": 40, "unit": "g" },
+      "nutritionPer100g": { "calories": 375, "proteinG": 7.5, "fatG": 0, "carbsG": 87.5, "fiberG": 2.5, "sugarG": null, "sodiumMg": 575 },
+      "ingredients": "MILLED CORN, SUGAR, SALT, MALTED BARLEY SYRUP. VITAMINS AND MINERALS.",
+      "source": { "provider": "USDA FoodData Central", "recordId": "2675130", "url": "https://fdc.nal.usda.gov/food-details/2675130/nutrients" },
+      "confidence": "high"
+    },
+    {
+      "id": "off-0884912004710",
+      "barcode": "0884912004710",
+      "name": "Grape-Nuts",
+      "brand": "Post",
+      "serving": { "text": "1 portion (58 g)" },
+      "nutritionPer100g": { "calories": 345, "proteinG": 10.34, "fatG": 2.59, "carbsG": 79.31, "fiberG": 12.07, "sugarG": 8.62, "sodiumMg": 466 },
+      "ingredients": "WHOLE GRAIN WHEAT FLOUR, MALTED BARLEY FLOUR, SALT, DRIED YEAST, VITAMINS AND MINERALS.",
+      "source": { "provider": "Open Food Facts", "recordId": "0884912004710", "url": "https://world.openfoodfacts.org/product/0884912004710" },
+      "confidence": "medium"
+    },
+    {
+      "id": "off-0058449770565",
+      "barcode": "0058449770565",
+      "name": "Pumpkin Seed + Flax Granola",
+      "brand": "Nature's Path Organic",
+      "serving": { "text": "0.75 cup cereal (55 g)" },
+      "nutritionPer100g": { "calories": 473, "proteinG": 10.91, "fatG": 18.18, "carbsG": 67.27, "fiberG": 7.27, "sugarG": 18.18, "sodiumMg": 82 },
+      "ingredients": "WHOLE GRAIN ROLLED OATS, CANE SUGAR, SOY OIL, BROWN RICE FLOUR, PUMPKIN SEEDS, FLAX SEEDS, OAT SYRUP SOLIDS, SEA SALT, MOLASSES, CINNAMON.",
+      "source": { "provider": "Open Food Facts", "recordId": "0058449770565", "url": "https://world.openfoodfacts.org/product/0058449770565" },
+      "confidence": "medium"
+    },
+    {
+      "id": "off-0058449770206",
+      "barcode": "0058449770206",
+      "name": "Heritage Flakes",
+      "brand": "Nature's Path Organic",
+      "serving": { "text": "1 portion (40 g)" },
+      "nutritionPer100g": { "calories": 400, "proteinG": 12.5, "fatG": 3.75, "carbsG": null, "fiberG": 17.5, "sugarG": 12.5, "sodiumMg": 425 },
+      "ingredients": "KAMUT KHORASAN WHEAT FLOUR, WHEAT BRAN, WHOLE WHEAT MEAL, CANE SUGAR, WHOLE OAT FLOUR, SPELT FLOUR, BARLEY FLOUR, WHOLE MILLET, QUINOA, SEA SALT, HONEY.",
+      "source": { "provider": "Open Food Facts", "recordId": "0058449770206", "url": "https://world.openfoodfacts.org/product/0058449770206" },
+      "confidence": "medium"
+    },
+    {
+      "id": "off-0016000147652",
+      "barcode": "0016000147652",
+      "name": "Lightly Sweetened Maple Berry Blend Cereal",
+      "brand": "Morning Summit",
+      "serving": { "text": "1 portion (55 g)" },
+      "nutritionPer100g": { "calories": 509, "proteinG": 10.91, "fatG": 27.27, "carbsG": null, "fiberG": 9.09, "sugarG": 23.64, "sodiumMg": 146 },
+      "ingredients": "ALMONDS, WHOLE GRAIN WHEAT, ORGANIC MAPLE SYRUP, WHOLE GRAIN OATS, SUGAR, DRIED COCONUT, PUMPKIN SEEDS, COCONUT OIL, DRIED SWEETENED CRANBERRIES, DRIED SWEETENED CHERRIES, CORN BRAN, BROWN SUGAR SYRUP, SALT.",
+      "source": { "provider": "Open Food Facts", "recordId": "0016000147652", "url": "https://world.openfoodfacts.org/product/0016000147652" },
+      "confidence": "medium"
+    },
+    {
+      "id": "off-0016000435094",
+      "barcode": "0016000435094",
+      "name": "Toasted Whole Grain Oat Cereal",
+      "brand": "Cheerios",
+      "serving": { "text": "1 1/2 cup (39 g)" },
+      "nutritionPer100g": { "calories": 359, "proteinG": 5, "fatG": 2.5, "carbsG": null, "fiberG": 4, "sugarG": 2, "sodiumMg": 190 },
+      "ingredients": "WHOLE GRAIN OATS, CORN STARCH, SUGAR, SALT, TRIPOTASSIUM PHOSPHATE, VITAMINS AND MINERALS.",
+      "source": { "provider": "Open Food Facts", "recordId": "0016000435094", "url": "https://world.openfoodfacts.org/product/0016000435094" },
+      "confidence": "medium"
+    },
+    {
+      "id": "off-0030000010402",
+      "barcode": "0030000010402",
+      "name": "Old Fashioned Oats",
+      "brand": "Quaker",
+      "serving": { "text": "1/2 cup dry (40 g)" },
+      "nutritionPer100g": { "calories": 375, "proteinG": 12.5, "fatG": 7.5, "carbsG": null, "fiberG": 10, "sugarG": 0, "sodiumMg": 0 },
+      "ingredients": "WHOLE GRAIN ROLLED OATS.",
+      "source": { "provider": "Open Food Facts", "recordId": "0030000010402", "url": "https://world.openfoodfacts.org/product/0030000010402" },
+      "confidence": "medium"
+    },
+    {
+      "id": "off-0855140002175",
+      "barcode": "0855140002175",
+      "name": "Original Ancient Grain Granola",
+      "brand": "Purely Elizabeth",
+      "serving": { "text": "0.33 cup (30 g)" },
+      "nutritionPer100g": { "calories": 433, "proteinG": 10, "fatG": 16.67, "carbsG": null, "fiberG": 6.67, "sugarG": 20, "sodiumMg": 450 },
+      "ingredients": "ORGANIC GLUTEN-FREE OATS, ORGANIC COCONUT SUGAR, ORGANIC COCONUT OIL, ORGANIC SUNFLOWER SEEDS, ORGANIC PUFFED AMARANTH, ORGANIC QUINOA FLAKES, ORGANIC CHIA SEEDS, CINNAMON, SEA SALT.",
+      "source": { "provider": "Open Food Facts", "recordId": "0855140002175", "url": "https://world.openfoodfacts.org/product/0855140002175" },
+      "confidence": "medium"
+    },
+    {
+      "id": "off-0096619194261",
+      "barcode": "0096619194261",
+      "name": "Ancient Grains Probiotic Granola",
+      "brand": "Kirkland Signature",
+      "serving": { "text": "1 serving (55 g)" },
+      "nutritionPer100g": { "calories": 455, "proteinG": 9.09, "fatG": 16.36, "carbsG": null, "fiberG": 10.91, "sugarG": 16.36, "sodiumMg": 436 },
+      "ingredients": "WHOLE GRAIN ROLLED OATS, CANE SUGAR, SOY OIL, KHORASAN WHEAT, ROLLED SPELT, ALMONDS, INULIN, RICE STARCH, ROLLED QUINOA, ROLLED AMARANTH, SEA SALT, MOLASSES, CINNAMON, PROBIOTICS.",
+      "source": { "provider": "Open Food Facts", "recordId": "0096619194261", "url": "https://world.openfoodfacts.org/product/0096619194261" },
+      "confidence": "medium"
+    },
+    {
+      "id": "off-0675625371189",
+      "barcode": "0675625371189",
+      "name": "Sprouted Rolled Oats",
+      "brand": "One Degree Organic Foods",
+      "serving": { "text": "0.5 cup (52 g)" },
+      "nutritionPer100g": { "calories": 385, "proteinG": 13.46, "fatG": 6.73, "carbsG": null, "fiberG": 11.54, "sugarG": 0, "sodiumMg": 0 },
+      "ingredients": "SPROUTED ORGANIC GLUTEN-FREE OATS.",
+      "source": { "provider": "Open Food Facts", "recordId": "0675625371189", "url": "https://world.openfoodfacts.org/product/0675625371189" },
+      "confidence": "medium"
+    },
+    {
+      "id": "off-0016000170032",
+      "barcode": "0016000170032",
+      "name": "Cheerios",
+      "brand": "General Mills",
+      "serving": { "text": "1 cup (39 g)" },
+      "nutritionPer100g": { "calories": 358, "proteinG": null, "fatG": null, "carbsG": null, "fiberG": null, "sugarG": null, "sodiumMg": null },
+      "ingredients": "WHOLE GRAIN OATS, CORN STARCH, SUGAR, SALT, TRIPOTASSIUM PHOSPHATE, VITAMINS AND MINERALS.",
+      "source": { "provider": "Open Food Facts", "recordId": "0016000170032", "url": "https://world.openfoodfacts.org/product/0016000170032" },
+      "confidence": "review",
+      "dataQualityNote": "Barcode and serving text were found, but the nutrient panel was incomplete in the secondary record."
+    },
+    {
+      "id": "off-0016000275263",
+      "barcode": "0016000275263",
+      "name": "Cheerios",
+      "brand": "General Mills",
+      "serving": { "text": "1 1/2 cup (39 g)" },
+      "nutritionPer100g": { "calories": null, "proteinG": null, "fatG": null, "carbsG": null, "fiberG": null, "sugarG": null, "sodiumMg": null },
+      "ingredients": "WHOLE GRAIN OATS, CORN STARCH, SUGAR, SALT, TRIPOTASSIUM PHOSPHATE, VITAMINS AND MINERALS.",
+      "source": { "provider": "Open Food Facts", "recordId": "0016000275263", "url": "https://world.openfoodfacts.org/product/0016000275263" },
+      "confidence": "review",
+      "dataQualityNote": "Barcode and ingredient list were found, but nutrient values were incomplete in the secondary record."
+    }
+  ]
+}
