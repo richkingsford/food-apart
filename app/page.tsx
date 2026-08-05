@@ -38,6 +38,7 @@ function formatNumber(value: number | null, suffix = "") {
 export default function Home() {
   const [selectedId, setSelectedId] = useState(products[0].id);
   const [query, setQuery] = useState("");
+  const [expandedId, setExpandedId] = useState<string | null>(null);
   const selected = products.find((product) => product.id === selectedId) ?? products[0];
   const signals = getSignals(selected);
   const palette = palettes[products.findIndex((product) => product.id === selected.id) % palettes.length];
@@ -125,19 +126,35 @@ export default function Home() {
             const nutrition = product.nutritionPer100g;
             const cardPalette = palettes[index % palettes.length];
             return <article className="cereal-card" key={product.id} style={{ "--card-accent": cardPalette[0], "--card-soft": cardPalette[1] } as React.CSSProperties}>
-              <button className="cereal-card-main" onClick={() => { setSelectedId(product.id); window.scrollTo({ top: 0, behavior: "smooth" }); }} aria-label={`Explore ${product.name}`}>
+              <button className="cereal-card-main" onClick={() => { setSelectedId(product.id); setExpandedId(product.id); }} aria-label={`Explore ${product.name}`}>
                 <div className="cereal-card-top"><span className="card-number">{String(index + 1).padStart(2, "0")}</span><span className="card-confidence">{product.confidence === "high" ? "label-backed" : "needs a peek"}</span></div>
                 <div className="mini-box" aria-hidden="true"><span>✦</span><b>{product.name.replace(" Cereal", "")}</b></div>
                 <p className="card-brand">{product.brand}</p>
                 <h3>{product.name.replace(" Cereal", "")}</h3>
                 <p className="card-reading">{cardSignals.whole ? "Whole grain leads the way." : `${cardSignals.first.slice(0, 28)} leads the list.`}</p>
                 <div className="card-metrics"><span><b>{nutrition.sugarG === null ? "—" : `${nutrition.sugarG}g`}</b><small>sugar</small></span><span><b>{nutrition.fiberG === null ? "—" : `${nutrition.fiberG}g`}</b><small>fiber</small></span><span><b>{nutrition.sodiumMg === null ? "—" : `${nutrition.sodiumMg}mg`}</b><small>sodium</small></span></div>
+                <div className="card-spark" aria-label="Quick nutrition read">
+                  <div className="card-spark-row"><span>sweet</span><i><u style={{ width: `${nutrition.sugarG === null ? 22 : Math.min(100, nutrition.sugarG / 25 * 100)}%` }} /></i><b>{nutrition.sugarG === null ? "unknown" : nutrition.sugarG > 15 ? "a lot" : nutrition.sugarG > 8 ? "some" : "a little"}</b></div>
+                  <div className="card-spark-row"><span>fiber</span><i><u style={{ width: `${nutrition.fiberG === null ? 22 : Math.min(100, nutrition.fiberG / 12 * 100)}%` }} /></i><b>{nutrition.fiberG === null ? "unknown" : nutrition.fiberG >= 8 ? "plenty" : nutrition.fiberG >= 4 ? "some" : "a little"}</b></div>
+                  <div className="card-spark-row"><span>sodium</span><i><u style={{ width: `${nutrition.sodiumMg === null ? 22 : Math.min(100, nutrition.sodiumMg / 800 * 100)}%` }} /></i><b>{nutrition.sodiumMg === null ? "unknown" : nutrition.sodiumMg > 500 ? "a lot" : nutrition.sodiumMg > 200 ? "some" : "a little"}</b></div>
+                </div>
                 <div className="card-bottom"><span className="tiny-score">{cardSignals.score}<small>/100</small></span><span className="card-arrow">↗</span></div>
               </button>
             </article>;
           })}
         </div>
       </section>
+
+      {expandedId && (() => {
+        const detail = products.find((product) => product.id === expandedId);
+        if (!detail) return null;
+        const detailSignals = getSignals(detail);
+        const n = detail.nutritionPer100g;
+        const level = (value: number | null, high: number, mid: number, positive = false) => value === null ? "unknown" : positive ? value >= high ? "plenty" : value >= mid ? "some" : "a little" : value > high ? "a lot" : value > mid ? "some" : "a little";
+        const width = (value: number | null, max: number) => `${value === null ? 22 : Math.min(100, value / max * 100)}%`;
+        const chart = (label: string, value: number | null, unit: string, max: number, read: string, note: string) => <div className="detail-chart"><div className="detail-chart-head"><span>{label}</span><b>{value === null ? "—" : `${value}${unit}`}</b></div><div className="detail-chart-bar"><u style={{ width: width(value, max) }} /></div><strong>{read}</strong><small>{note}</small></div>;
+        return <div className="detail-overlay" role="dialog" aria-modal="true" aria-label={`${detail.name} details`} onClick={() => setExpandedId(null)}><div className="detail-panel" onClick={(event) => event.stopPropagation()}><button className="detail-close" onClick={() => setExpandedId(null)} aria-label="Close details">×</button><p className="detail-kicker">FULL CARD · {detail.confidence === "high" ? "LABEL-BACKED" : "NEEDS A PEEK"}</p><div className="detail-title-row"><div><h2>{detail.name.replace(" Cereal", "")}</h2><p>{detail.brand} · {detail.serving.text ?? `${detail.serving.amount} ${detail.serving.unit}`}</p></div><div className="detail-score"><b>{detailSignals.score}<small>/100</small></b><span>{detailSignals.score >= 80 ? "looking bright" : "worth a closer look"}</span></div></div><p className="detail-summary">{detailSignals.whole ? "A whole-grain start gives this bowl a little more staying power." : "A curious label with a few clues worth noticing before the first spoonful."} This is a friendly read, not a verdict.</p><div className="detail-chart-grid">{chart("Sweetness", n.sugarG, "g", 25, level(n.sugarG, 15, 8), "lower is gentler")}{chart("Fiber", n.fiberG, "g", 12, level(n.fiberG, 8, 4, true), "more is a helpful clue")}{chart("Sodium", n.sodiumMg, "mg", 800, level(n.sodiumMg, 500, 200), "lower is gentler")}</div><div className="detail-lower"><div className="detail-ingredients"><p className="detail-kicker">INGREDIENT TRAIL</p><ol>{detail.ingredients.split(",").slice(0, 8).map((ingredient, index) => <li key={`${ingredient}-${index}`}>{ingredient.replace(/[.]/g, "").trim()}</li>)}</ol></div><div className="detail-read"><p className="detail-kicker">QUICK READ</p><p><b>First up:</b> {detailSignals.whole ? "whole grain shows up early" : detailSignals.first}</p><p><b>Little flags:</b> {detailSignals.flags.length ? detailSignals.flags.join(" · ") : "nothing shouting from the label"}</p><p className="detail-note">Numbers are shown per 100g so boxes can be compared on the same little ruler.</p></div></div></div></div>;
+      })()}
 
       <footer><span>food apart <i>•</i> made for better questions</span><span>Data is educational, not medical advice.</span></footer>
     </main>
